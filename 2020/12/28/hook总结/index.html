@@ -80,13 +80,15 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <p>Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性，是一些可以让你在函数组件里”钩入”React state 及生命周期等特性的函数。Hook 不能在 class 组件中使用 —— 这使得你不使用 class 也能使用 React。</p>
-<p>基础Hook:</p>
-<p>useState 给函数组件添加内部state<br>useEffect 可以让你在函数组件中执行副作用操作<br>useContext 组件间数据共享更轻松</p>
-<p>额外Hook：</p>
-<p>useReducer 替代useState统一管理数据状态<br>useRef useRef 返回一个可变的 ref 对象<br>useCallback<br>useMemo</p>
-<p>useState<br>示例：</p>
-<p>  // 声明一个叫 “count” 的 state 变量<br>  function App() {<br>        // 声明一个叫 “count” 的 state 变量<br>    const [count, setCount] = useState(0);<br>    return (<br>        <div><br>        <p>{count}</p><br>        &lt;button onClick={() =&gt; {<br>            setCount(0)<br>        }}&gt;<br>            点击加1<br>        </button><br>        </div><br>    );<br>  }</p>
+        <h1 id="Hook-钩子"><a href="#Hook-钩子" class="headerlink" title="Hook (钩子)"></a>Hook (钩子)</h1><p>它可以让你在不编写class 的情况下使用state以及其他的React特性。（比如生命周期、ref等类组件拥有的特性）</p>
+<ul>
+<li><p>基础Hook:<br>  useState 给函数组件添加内部state<br>  useEffect 可以让你在函数组件中执行副作用操作<br>  useContext 组件间数据共享更轻松</p>
+</li>
+<li><p>额外Hook：<br>  useReducer 替代useState统一管理数据状态<br>  useRef useRef 返回一个可变的 ref 对象<br>  useCallback<br>  useMemo</p>
+</li>
+<li><h2 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h2><p>  语法：const [num, setNum] = useState(0)</p>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function App() &#123;</span><br><span class="line">  &#x2F;&#x2F; 声明一个叫 &quot;count&quot; 的 state 变量</span><br><span class="line">  const [count, setCount] &#x3D; useState(0);</span><br><span class="line">  return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">      &lt;p&gt;&#123;count&#125;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;() &#x3D;&gt; setCount(0)&#125;&gt;</span><br><span class="line">          点击加1</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       </div>
     </div>
