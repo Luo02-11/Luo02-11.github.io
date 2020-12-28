@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>Hexo</title>
+  <title>Class总结 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
@@ -62,28 +62,25 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
 <meta name="generator" content="Hexo 5.3.0"></head>
 <body>
-<div id="page">
+<div class="single">
 
-<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/cover.jpeg)">
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
   <div class="overlay">
-  <div class="featured">
+  <div class="page-title">
     <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
-    <span>John Doe</span>
-    <h1>Hexo</h1>
+    <span>2020-12-28</span>
+    <h2>Class总结</h2>
     
-    
-  </div>
-  </div>
+    </div>
+</div>
 </div>
 
 <div id="lx-main-content">
   <div class="lx-post">
-
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2020/12/28/Class%E6%80%BB%E7%BB%93/">Class总结</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-12-28</span>
-      <p><h3 id="类的由来"><a href="#类的由来" class="headerlink" title="类的由来"></a>类的由来</h3><p>JavaScript 语言中，生成实例对象的传统方法是通过构造函数。下面是一个例子。</p>
+    <div class="lx-entry padding">
+      <div>
+        <h3 id="类的由来"><a href="#类的由来" class="headerlink" title="类的由来"></a>类的由来</h3><p>JavaScript 语言中，生成实例对象的传统方法是通过构造函数。下面是一个例子。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Point(x, y) &#123;</span><br><span class="line">  this.x &#x3D; x;</span><br><span class="line">  this.y &#x3D; y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Point.prototype.toString &#x3D; function () &#123;</span><br><span class="line">  return &#39;(&#39; + this.x + &#39;, &#39; + this.y + &#39;)&#39;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var p &#x3D; new Point(1, 2);</span><br></pre></td></tr></table></figure>
 <p>上面这种写法跟传统的面向对象语言（比如 C++ 和 Java）差异很大，很容易让新学习这门语言的程序员感到困惑。</p>
 <p>ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类。</p>
@@ -123,73 +120,41 @@
 <h3 id="Class-表达式"><a href="#Class-表达式" class="headerlink" title="Class 表达式"></a>Class 表达式</h3><p>与函数一样，类也可以使用表达式的形式定义。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const MyClass &#x3D; class Me &#123;</span><br><span class="line">  getClassName() &#123;</span><br><span class="line">    return Me.name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>上面代码使用表达式定义了一个类。需要注意的是，这个类的名字是Me，但是Me只在 Class 的内部可用，指代当前类。在 Class 外部，这个类只能用MyClass引用。</p>
-</p>
-      <div class="post-button"><a class="btn" href="/2020/12/28/Class%E6%80%BB%E7%BB%93/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2020/12/28/hook%E6%80%BB%E7%BB%93/">hook总结</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-12-28</span>
-      <p><h1 id="Hook-钩子"><a href="#Hook-钩子" class="headerlink" title="Hook (钩子)"></a>Hook (钩子)</h1><h2 id="是什么？"><a href="#是什么？" class="headerlink" title="是什么？"></a>是什么？</h2><p>React Hooks 是 React 16.7.0-alpha 版本推出的新特性，想尝试的同学安装此版本即可。<br>React Hooks 要解决的问题是状态共享，是继 render-props 和 higher-order components 之后的第三种状态共享方案，不会产生 JSX 嵌套地狱问题。<br>这个状态指的是状态逻辑，所以称为状态逻辑复用会更恰当，因为只共享数据处理逻辑，不会共享数据本身。<br>它可以让你在不编写class 的情况下使用state以及其他的React特性。（比如生命周期、ref等类组件拥有的特性）</p>
-<ul>
-<li><p>基础Hook:</p>
-<p>  useState 给函数组件添加内部state<br>  useEffect 可以让你在函数组件中执行副作用操作<br>  useContext 组件间数据共享更轻松</p>
-</li>
-<li><p>额外Hook：</p>
-<p>  useReducer 替代useState统一管理数据状态<br>  useRef<br>  useCallback<br>  useMemo</p>
-</li>
-</ul>
-<h2 id="一个简单的Hook："><a href="#一个简单的Hook：" class="headerlink" title="一个简单的Hook："></a>一个简单的Hook：</h2>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function App() &#123;</span><br><span class="line">  &#x2F;&#x2F; 声明一个叫 &quot;count&quot; 的 state 变量</span><br><span class="line">  const [count, setCount] &#x3D; useState(0);</span><br><span class="line">  return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">      &lt;p&gt;&#123;count&#125;&lt;&#x2F;p&gt;</span><br><span class="line">      &lt;button onClick&#x3D;&#123;() &#x3D;&gt; setCount(0)&#125;&gt;</span><br><span class="line">          点击加1</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>useState</strong> 是我们要学习的第一个 “Hook”，这个例子是简单演示。</p>
-<ul>
-<li><h2 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h2><p>  通过函数组件来调用它来给组件添加一些<strong>内部state</strong>。React在重新渲染时保留这个state,useState会返回一对值：当前状态和一个让你更新它的函数，它类似class组件的this.setState,但是它不会把新的state和旧的state进行合并。<br>  useState唯一的参数就是初始state。</p>
-<p>  语法：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const [num, setNum] &#x3D; useState(0)；</span><br></pre></td></tr></table></figure></li>
-<li><h2 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h2><p>  你之前可能已经在 React 组件中执行过数据获取、订阅或者手动修改过 DOM。我们统一把这些操作称为”副作用”，或者简称为”作用”</p>
-<p>  useEffect 就是一个 Effect Hook，给函数组件增加了操作副作用的能力。它跟 class 组件中的 <strong>componentDidMount</strong>、<strong>componentDidUpdate</strong> 和 <strong>componentWillUnmount</strong> 具有相同的用途，只不过被合并成了一个 API。</p>
-<p>  例如：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function App() &#123;</span><br><span class="line">    &#x2F;&#x2F; 声明一个叫 &quot;count&quot; 的 state 变量</span><br><span class="line">    const [count, setCount] &#x3D; useState(0);</span><br><span class="line">      &#x2F;&#x2F; 相当于 componentDidMount 和 componentDidUpdate:</span><br><span class="line">    useEffect(() &#x3D;&gt; &#123;</span><br><span class="line">        &#x2F;&#x2F; 使用浏览器的 API 更新页面标题</span><br><span class="line">        document.title &#x3D; &#96;You clicked $&#123;count&#125; times&#96;;</span><br><span class="line">    &#125;);</span><br><span class="line">    return (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">        &lt;p&gt;&#123;count&#125;&lt;&#x2F;p&gt;</span><br><span class="line">        &lt;button onClick&#x3D;&#123;() &#x3D;&gt; setCount(0)&#125;&gt;</span><br><span class="line">            点击加1</span><br><span class="line">        &lt;&#x2F;button&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><h2 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a>useContext</h2><p>  接收一个 context 对象（React.createContext 的返回值）并返回该 context 的当前值。</p>
-<p>  是用来解决组件通信，用法：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const value &#x3D; useContext(MyContext);</span><br></pre></td></tr></table></figure></li>
-<li><h2 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h2><p>  useState 的替代方案。它接收一个形如 (state, action) =&gt; newState 的 reducer，并返回当前的 state 以及与其配套的 dispatch 方法。</p>
-<p>  在某些场景下，useReducer 会比 useState 更适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 useReducer 还能给那些会触发深更新的组件做性能优化，因为你可以向子组件传递 dispatch 而不是回调函数。</p>
-</li>
-</ul>
-</p>
-      <div class="post-button"><a class="btn" href="/2020/12/28/hook%E6%80%BB%E7%BB%93/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2020/12/25/promise%E6%80%BB%E7%BB%93/">promise总结</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-12-25</span>
-      <p><p>hello！</p>
-</p>
-      <div class="post-button"><a class="btn" href="/2020/12/25/promise%E6%80%BB%E7%BB%93/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2020/12/25/hello-world/">Hello World</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2020-12-25</span>
-      <p><p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-</p>
-      <div class="post-button"><a class="btn" href="/2020/12/25/hello-world/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
-    </div>
-  </div>
 
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>No newer post</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2020/12/28/hook%E6%80%BB%E7%BB%93/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>hook总结</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
 
-
+</div>
 
 <footer>
   <div>
@@ -197,8 +162,6 @@
   </div>
 </footer>
 
-  </div>
-</div>
 </div>
 
 <button class="hamburger hamburger--arrow-r" type="button">
