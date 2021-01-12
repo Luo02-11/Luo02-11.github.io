@@ -81,6 +81,35 @@
 
   <div class="lx-entry padding">
     <div>
+      <h2 class="title"><a href="/2021/01/12/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%80%BB%E7%BB%93/">深浅拷贝总结</a></h2>
+      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2021-01-12</span>
+      <p><h2 id="JavaScript深浅拷贝"><a href="#JavaScript深浅拷贝" class="headerlink" title="JavaScript深浅拷贝"></a>JavaScript深浅拷贝</h2><h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><ul>
+<li>浅拷贝：只是简单的复制引用，并没有真正的值，彼此之间会有影响（拷贝对象会随着目标对象改变而改变）。</li>
+</ul>
+<p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const oneObj &#x3D; [1,2,3];</span><br><span class="line">const towObj &#x3D; &#123;name:&#39;你猜&#39;,b:&#39;b&#39;,c:[1,2,3]&#125;;</span><br><span class="line"></span><br><span class="line">const cloneOne &#x3D; oneObj;</span><br><span class="line">const cloneTwo &#x3D; towObj;</span><br><span class="line"></span><br><span class="line">console.log(cloneOne); &#x2F;&#x2F; [1,2,3]</span><br><span class="line">console.log(towObj); &#x2F;&#x2F; &#123;name:&#39;你猜&#39;,b:&#39;b&#39;,c:Array[3]&#125;</span><br><span class="line"></span><br><span class="line">cloneOne.push(4);</span><br><span class="line">cloneTwo.name &#x3D; &#123;aa:&#39;aa&#39;&#125;;</span><br><span class="line"></span><br><span class="line">console.log(cloneOne); &#x2F;&#x2F; [1,2,3,4]</span><br><span class="line">console.log(oneObj); &#x2F;&#x2F; [1,2,3,4]</span><br><span class="line"></span><br><span class="line">console.log(cloneTwo); &#x2F;&#x2F; &#123;name:&#123;aa:&#39;aa&#39;&#125;,b:&#39;b&#39;,c:Array[3]&#125;</span><br><span class="line">console.log(oneObj); &#x2F;&#x2F; &#123;name:&#123;aa:&#39;aa&#39;&#125;,b:&#39;b&#39;,c:Array[3]&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>concat()方法:该方法可以连接两个或者更多的数组，但是它不会修改已存在的数组，而是返回一个新数组。（只是对数组的第一层进行深拷贝，都不会修改原数组，而是返回一个修改后的新数组）</p>
+</li>
+<li><p>slice()方法：该方法不传值将会截取整个字段。（只是对数组的第一层进行深拷贝，都不会修改原数组，而是返回一个修改后的新数组）</p>
+</li>
+<li><p>Object.assign()方法：拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。</p>
+</li>
+<li><p>…展开运算符方法：实现的是对象第一层的深拷贝，后面的只是拷贝的引用值。</p>
+</li>
+</ul>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><ul>
+<li><p>深拷贝：对目标的完全拷贝，值是相同的，互不影响（目标对象改变不影响拷贝后的对象）。</p>
+</li>
+<li><p>JSON的stringify/parse方法：<br>（1）JSON.stringify 是将一个 JavaScript 值转成一个 JSON 字符串。<br>（2）JSON.parse 是将一个 JSON 字符串转成一个 JavaScript 值或对象。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const firstObj &#x3D; &#123;a:&#39;a&#39;,b:&#39;b&#39;,c:[1,2,3],d:&#123;dSon:&#39;son&#39;&#125;&#125;;</span><br><span class="line">const cloneObj &#x3D; JSON.parse(JSON.stringify(firstObj));</span><br><span class="line">console.log(cloneObj &#x3D;&#x3D;&#x3D; firstObj); &#x2F;&#x2F; false</span><br><span class="line"></span><br><span class="line">cloneObj.a &#x3D; &#39;aa&#39;;</span><br><span class="line">cloneObj.c &#x3D; [1,1,1];</span><br><span class="line">cloneObj.d.dSon &#x3D; &#39;brother&#39;;</span><br><span class="line"></span><br><span class="line">console.log(cloneObj); &#x2F;&#x2F; &#123;a:&#39;aa&#39;,b:&#39;b&#39;,c:[1,1,1],d:&#123;dSon:&#39;brother&#39;&#125;&#125;;</span><br><span class="line">console.log(firstObj); &#x2F;&#x2F; &#123;a:&#39;a&#39;,b:&#39;b&#39;,c:[1,2,3],d:&#123;dSon:&#39;son&#39;&#125;</span><br></pre></td></tr></table></figure></p>
+      <div class="post-button"><a class="btn" href="/2021/01/12/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D%E6%80%BB%E7%BB%93/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>Read More</a></div>
+    </div>
+  </div>
+  <div class="lx-entry padding">
+    <div>
       <h2 class="title"><a href="/2021/01/11/%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%80%BB%E7%BB%93/">原型链总结</a></h2>
       <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2021-01-11</span>
       <p><h1 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h1><ul>

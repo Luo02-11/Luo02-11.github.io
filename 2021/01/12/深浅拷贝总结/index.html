@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>深浅拷贝总结 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '0.3.9',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'null'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
+  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+<div class="single">
+
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2021-01-12</span>
+    <h2>深浅拷贝总结</h2>
+    
+    </div>
+</div>
+</div>
+
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h2 id="JavaScript深浅拷贝"><a href="#JavaScript深浅拷贝" class="headerlink" title="JavaScript深浅拷贝"></a>JavaScript深浅拷贝</h2><h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><ul>
+<li>浅拷贝：只是简单的复制引用，并没有真正的值，彼此之间会有影响（拷贝对象会随着目标对象改变而改变）。</li>
+</ul>
+<p>实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const oneObj &#x3D; [1,2,3];</span><br><span class="line">const towObj &#x3D; &#123;name:&#39;你猜&#39;,b:&#39;b&#39;,c:[1,2,3]&#125;;</span><br><span class="line"></span><br><span class="line">const cloneOne &#x3D; oneObj;</span><br><span class="line">const cloneTwo &#x3D; towObj;</span><br><span class="line"></span><br><span class="line">console.log(cloneOne); &#x2F;&#x2F; [1,2,3]</span><br><span class="line">console.log(towObj); &#x2F;&#x2F; &#123;name:&#39;你猜&#39;,b:&#39;b&#39;,c:Array[3]&#125;</span><br><span class="line"></span><br><span class="line">cloneOne.push(4);</span><br><span class="line">cloneTwo.name &#x3D; &#123;aa:&#39;aa&#39;&#125;;</span><br><span class="line"></span><br><span class="line">console.log(cloneOne); &#x2F;&#x2F; [1,2,3,4]</span><br><span class="line">console.log(oneObj); &#x2F;&#x2F; [1,2,3,4]</span><br><span class="line"></span><br><span class="line">console.log(cloneTwo); &#x2F;&#x2F; &#123;name:&#123;aa:&#39;aa&#39;&#125;,b:&#39;b&#39;,c:Array[3]&#125;</span><br><span class="line">console.log(oneObj); &#x2F;&#x2F; &#123;name:&#123;aa:&#39;aa&#39;&#125;,b:&#39;b&#39;,c:Array[3]&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>concat()方法:该方法可以连接两个或者更多的数组，但是它不会修改已存在的数组，而是返回一个新数组。（只是对数组的第一层进行深拷贝，都不会修改原数组，而是返回一个修改后的新数组）</p>
+</li>
+<li><p>slice()方法：该方法不传值将会截取整个字段。（只是对数组的第一层进行深拷贝，都不会修改原数组，而是返回一个修改后的新数组）</p>
+</li>
+<li><p>Object.assign()方法：拷贝的是属性值。假如源对象的属性值是一个指向对象的引用，它也只拷贝那个引用值。</p>
+</li>
+<li><p>…展开运算符方法：实现的是对象第一层的深拷贝，后面的只是拷贝的引用值。</p>
+</li>
+</ul>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><ul>
+<li><p>深拷贝：对目标的完全拷贝，值是相同的，互不影响（目标对象改变不影响拷贝后的对象）。</p>
+</li>
+<li><p>JSON的stringify/parse方法：<br>（1）JSON.stringify 是将一个 JavaScript 值转成一个 JSON 字符串。<br>（2）JSON.parse 是将一个 JSON 字符串转成一个 JavaScript 值或对象。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const firstObj &#x3D; &#123;a:&#39;a&#39;,b:&#39;b&#39;,c:[1,2,3],d:&#123;dSon:&#39;son&#39;&#125;&#125;;</span><br><span class="line">const cloneObj &#x3D; JSON.parse(JSON.stringify(firstObj));</span><br><span class="line">console.log(cloneObj &#x3D;&#x3D;&#x3D; firstObj); &#x2F;&#x2F; false</span><br><span class="line"></span><br><span class="line">cloneObj.a &#x3D; &#39;aa&#39;;</span><br><span class="line">cloneObj.c &#x3D; [1,1,1];</span><br><span class="line">cloneObj.d.dSon &#x3D; &#39;brother&#39;;</span><br><span class="line"></span><br><span class="line">console.log(cloneObj); &#x2F;&#x2F; &#123;a:&#39;aa&#39;,b:&#39;b&#39;,c:[1,1,1],d:&#123;dSon:&#39;brother&#39;&#125;&#125;;</span><br><span class="line">console.log(firstObj); &#x2F;&#x2F; &#123;a:&#39;a&#39;,b:&#39;b&#39;,c:[1,2,3],d:&#123;dSon:&#39;son&#39;&#125;</span><br></pre></td></tr></table></figure>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>No newer post</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2021/01/11/%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%80%BB%E7%BB%93/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>原型链总结</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2021.<a href="/">Hexo</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="John Doe"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>John Doe</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>Pages</span>
+        <ul>
+          <li><a href="/guestbook/">Guestbook</a></li>
+        <li><a href="/about/">About</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>Friends</span>
+        <ul>
+          <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.9/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+
+
+</body>
+</html>
